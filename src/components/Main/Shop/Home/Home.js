@@ -21,7 +21,7 @@ const { navigator } = this.props;
 <View style={{flex:1,backgroundColor:'red'}}>
 <Text> Home</Text>
 
-<TouchableOpacity onPress={this.gotoAuthentication.bind(this)}>
+<TouchableOpacity onPress={this.props.gotoAuthentication}>
 <Text>Authentication</Text>
 </TouchableOpacity>
 
