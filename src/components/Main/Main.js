@@ -1,59 +1,44 @@
-import React,{Component} from 'react'
-import {View,Text,TouchableOpacity} from 'react-native';
+import React,{ Component } from 'react';
+// import {View,Text,TouchableOpacity} from 'react-native';
+
+//Drawer
+import Drawer from 'react-native-drawer';
+//Main Menu
+import Menu from './Menu';
+//Shop
+import Shop from './Shop/Shop';
+
+
 
 export default class Main extends Component{
 
 //Pushes to our Authentication Screen
-  gotoAuthentication(){
-
-  const {navigator} = this.props;
- navigator.push({ name:'AUTHENTICATION'});
-
-  }
-
-  gotoChangeInfo(){
-
-  const {navigator} = this.props;
- navigator.push({ name:'CHANGE_INFO'});
-
-  }
-
-  gotoOrderHistory(){
-
-  const {navigator} = this.props;
- navigator.push({ name:'ORDER_HISTORY'});
-
-  }
-
-render(){
-
-return(
-
-<View style={{flex:1,backgroundColor:'green'}}>
-
-<Text>Main Application</Text>
-<TouchableOpacity onPress={this.gotoAuthentication.bind(this)}>
-<Text>Go to Authentication </Text>
-</TouchableOpacity>
-
-<TouchableOpacity onPress={this.gotoChangeInfo.bind(this)}>
-<Text>Go to ChangeInfo </Text>
-</TouchableOpacity>
-
-
-<TouchableOpacity onPress={this.gotoOrderHistory.bind(this)}>
-<Text>Go to OrderHistory </Text>
-</TouchableOpacity>
 
 
 
-</View>
+  //SideMenu Functions
+
+  closeControlPanel = () => {
+    this.drawer.close();
+  };
+  openControlPanel = () => {
+    this.drawer.open();
+  };
 
 
 
-)
-
-
-}
-
+///Render SideMenu Pushing Screens const { navigator } = this.props;
+  render() {
+        const { navigator } = this.props;
+        return (
+            <Drawer
+                ref={(ref) => { this.drawer = ref; }}
+                content={<Menu navigator={navigator} />}
+                openDrawerOffset={0.4}
+                tapToClose
+            >
+                <Shop open={this.openControlPanel.bind(this)} />
+            </Drawer>
+        );
+    }
 }
