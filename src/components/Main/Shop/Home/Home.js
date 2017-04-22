@@ -1,5 +1,10 @@
 import React,{Component} from 'react'
-import {View,Text,TouchableOpacity} from 'react-native';
+import {View,Text,TouchableOpacity,ScrollView} from 'react-native';
+
+
+//Collection Component
+import Collection from './Collection'
+import Category from './Category'
 
 
 class Home extends Component{
@@ -14,18 +19,19 @@ class Home extends Component{
   }
 
 
-
+//Card Rendered from Collection
 render(){
 const { navigator } = this.props;
   return(
-<View style={{flex:1,backgroundColor:'red'}}>
-<Text> Home</Text>
-
-<TouchableOpacity onPress={this.props.gotoAuthentication}>
-<Text>Authentication</Text>
-</TouchableOpacity>
+    <ScrollView>
+  
+<View style={{flex:1,backgroundColor:'#D4D3D0'}}>
+<Collection/>
+<Category/>
 
 </View>
+</ScrollView>
+
 
   );
 }
