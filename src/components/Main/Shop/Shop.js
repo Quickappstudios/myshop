@@ -12,6 +12,7 @@ import Home from './Home/Home'
 import Contact from './Contact/Contact'
 import Search from './Search/Search'
 import Cart from './Cart/Cart'
+import Header from './Header'
 
 
 //Dimensions
@@ -48,12 +49,7 @@ render(){
   return(
 
   <View style={{flex:1}}>
-  <View style={{height: height / 8}}>
-<TouchableOpacity onPress={this.openMenu.bind(this)}>
-<Text> openMenu</Text>
-</TouchableOpacity>
-  </View>
-
+  <Header onOpen={this.openMenu.bind(this)}/>
 
 <TabNavigator>
 
