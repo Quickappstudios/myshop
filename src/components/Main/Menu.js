@@ -47,7 +47,7 @@ this.state = {isLogedIn:true};
           const {menuContainer,menuTitle,menuText,menuButton,profile,btnstyle,btnText,buttonContainer,loginContainer} = styles;
 
          //SignIn Button
-          const logout =(
+          const logoutJSX =(
                 <View style={{ flex: 1 }}>
             <TouchableOpacity style={btnstyle} onPress={this.gotoAuthentication.bind(this)}>
                 <Text style={menuText}>Sign In</Text>
@@ -56,58 +56,46 @@ this.state = {isLogedIn:true};
 
          );
 
-
-         const login=(
+        //when we are logged in we see this
+         const loginJSX=(
           <View style={loginContainer}>
+       <Text style={menuTitle}> John Tyrrell</Text>
+          <View>
+
+  <TouchableOpacity style={btnstyle} onPress={this.gotoOrderHistory.bind(this)}>
+   <Text style={menuText}>Order History</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity  style={btnstyle} onPress={this.gotoChangeInfo.bind(this)}>
+    <Text style={menuButton}>ChangeInfo</Text>
+    </TouchableOpacity >
 
 
-          </View>
+    <TouchableOpacity style={btnstyle} >
+    <Text style={menuButton}>Sign Out</Text>
+    </TouchableOpacity>
+    </View>
+
+  <View/>
+
+  </View>
 
 
-         );
-
-
-
-            return (
-
-
-
-
-                <View style={menuContainer}>
-
-                 <Image source={profileIcon} style={profile}/>
-
-
-<View style={{flex:1,justifyContent:'space-between',alignItems:'center'}}>
-                 <Text style={menuTitle}> John Tyrrell</Text>
-
-
-
-              <View>
-
-              <TouchableOpacity style={btnstyle} onPress={this.gotoAuthentication.bind(this)}>
-                     <Text style={menuText}>Order History</Text>
-                 </TouchableOpacity>
-
-                    <TouchableOpacity  style={btnstyle} onPress={this.gotoChangeInfo.bind(this)}>
-                        <Text style={menuButton}>ChangeInfo</Text>
-                    </TouchableOpacity >
-
-
-                    <TouchableOpacity style={btnstyle} onPress={this.gotoOrderHistory.bind(this)}>
-                        <Text style={menuButton}>Sign Out</Text>
-                    </TouchableOpacity>
-                    </View>
-
-                    <View/>
-
-                    </View>
+);
 
 
 
+//check if logged in we see sign in if false if true we see all buttons
+     const mainJSX = this.state.isLogedIn ? loginJSX: logoutJSX;
 
+return (
 
-                  </View>
+<View style={menuContainer}>
+ <Image source={profileIcon} style={profile}/>
+
+  {mainJSX}
+
+   </View>
 
 
             );
@@ -178,8 +166,6 @@ loginContainer:{
 flex:1,
 justifyContent:'space-between',
 alignItems:'center'
-
-
 }
 
 
