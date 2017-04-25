@@ -5,6 +5,8 @@ import {View,Text,TouchableOpacity,ScrollView} from 'react-native';
 //Collection Component
 import Collection from './Collection'
 import Category from './Category'
+// import Topproducts from './Topproducts'
+import Topproducts from './Topproducts'
 
 
 class Home extends Component{
@@ -24,11 +26,11 @@ render(){
 const { navigator } = this.props;
   return(
     <ScrollView>
-  
+
 <View style={{flex:1,backgroundColor:'#D4D3D0'}}>
 <Collection/>
 <Category/>
-
+<Topproducts/>
 </View>
 </ScrollView>
 
