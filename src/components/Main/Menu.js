@@ -1,9 +1,25 @@
 import React,{ Component } from 'react'
-import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
+import {View,Text,TouchableOpacity,StyleSheet,Image} from 'react-native';
+
+import profileIcon from '../../media/temp/profile.png';
 
 class Menu extends Component{
 
-  //Push to Screeens
+//constructor for state if loggin is true we loggin
+
+constructor(props){
+
+super(props);
+this.state = {isLogedIn:true};
+
+}
+
+
+
+
+  //
+  ///Push to Screeens For Navigation menu
+  ///
 
      gotoAuthentication() {
         const { navigator } = this.props;
@@ -24,36 +40,105 @@ class Menu extends Component{
 
 
     //Navigation Drawer Component//
+     //Array of Objects
+
         render() {
 
-          const {menuContainer,menuTitle,menuButton} = styles;
+          const {menuContainer,menuTitle,menuText,menuButton,profile,btnstyle,btnText,buttonContainer,loginContainer} = styles;
+
+         //SignIn Button
+          const logout =(
+                <View style={{ flex: 1 }}>
+            <TouchableOpacity style={btnstyle} onPress={this.gotoAuthentication.bind(this)}>
+                <Text style={menuText}>Sign In</Text>
+            </TouchableOpacity>
+           </View>
+
+         );
+
+
+         const login=(
+          <View style={loginContainer}>
+
+
+          </View>
+
+
+         );
+
+
+
             return (
-                <View style={{ flex: 1, backgroundColor: 'purple' }}>
+
+
+
+
                 <View style={menuContainer}>
-                    <Text style={menuTitle}> Wear a Dress</Text>
-                    <TouchableOpacity onPress={this.gotoAuthentication.bind(this)}>
-                        <Text style={menuButton}>Go to Authentication</Text>
+
+                 <Image source={profileIcon} style={profile}/>
+
+
+<View style={{flex:1,justifyContent:'space-between',alignItems:'center'}}>
+                 <Text style={menuTitle}> John Tyrrell</Text>
+
+
+
+              <View>
+
+              <TouchableOpacity style={btnstyle} onPress={this.gotoAuthentication.bind(this)}>
+                     <Text style={menuText}>Order History</Text>
+                 </TouchableOpacity>
+
+                    <TouchableOpacity  style={btnstyle} onPress={this.gotoChangeInfo.bind(this)}>
+                        <Text style={menuButton}>ChangeInfo</Text>
+                    </TouchableOpacity >
+
+
+                    <TouchableOpacity style={btnstyle} onPress={this.gotoOrderHistory.bind(this)}>
+                        <Text style={menuButton}>Sign Out</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={this.gotoChangeInfo.bind(this)}>
-                        <Text style={menuButton}>Go to ChangeInfo</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={this.gotoOrderHistory.bind(this)}>
-                        <Text style={menuButton}>Go to OrderHistory</Text>
-                    </TouchableOpacity>
+                    </View>
+
+                    <View/>
 
                     </View>
-                </View>
+
+
+
+
+
+                  </View>
+
+
             );
         }
     }
 
+
+    ///Menu Stylesheet
+
     const styles = StyleSheet.create({
+     ///Profile Container
 
       menuContainer:{
-      paddingTop:50
+      flex:1,
+      backgroundColor:'purple',
+      borderColor:'white',
+      alignItems:'center'
+      },
+
+  ///Profile Image Sidemenu
+    profile:{
+      width:150,
+      height:150,
+      borderRadius:50,
+      marginBottom:30,
+      marginVertical:30
+
 
     },
 
+///side menu title
   menuTitle:{
 
     color:'white',
@@ -62,17 +147,39 @@ class Menu extends Component{
     lineHeight:30,
     textAlign:'center',
     paddingBottom:30
+},
 
 
-  },
+buttonContainer:{
+  backgroundColor:'green'
+},
 
-menuButton:{
+//button style For Menu
+btnstyle:{
+height:50,
+backgroundColor:'white',
+borderRadius:5,
+//stretches width of button
+paddingHorizontal:40,
+marginBottom:20,
+paddingTop:15
+},
 
-  color:'white',
-  fontSize:18,
-  fontFamily:'Avenir',
-  lineHeight:30,
-  textAlign:'center'
+//Button TextColor
+btnText:{
+color:'#34B089',
+fontSize:20
+},
+
+
+//Login container
+
+loginContainer:{
+flex:1,
+justifyContent:'space-between',
+alignItems:'center'
+
+
 }
 
 
