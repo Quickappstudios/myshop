@@ -16,7 +16,7 @@ StatusBar.setHidden(true);
 
 export default class App extends Component{
 
-///Navigator
+///Navigator Main Screen Route
 render(){
 
 return(

@@ -43,7 +43,7 @@ const {wrapper,textStyle,imageStyle,cateTitle} = styles;
 
 //933 x465 for height and width of card
 
-const imageWidth = width -40;
+const imageWidth = width -20;
 const imageHeight = (imageWidth /933) * 465
 
 

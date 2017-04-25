@@ -5,7 +5,7 @@ import profileIcon from '../../media/temp/profile.png';
 
 class Menu extends Component{
 
-//constructor for state if loggin is true we loggin
+//constructor for state if loggin is true we loggin if false we get login screen
 
 constructor(props){
 
