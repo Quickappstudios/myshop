@@ -21,7 +21,7 @@ render(){
     switch(route.name) {
 
     case 'HOME_VIEW': return <HomeView navigator={navigator}/>;
-    case 'LIST_PRODUCT': return <ListProduct/>;
+    case 'LIST_PRODUCT': return <ListProduct navigator={navigator}/>;
     default:return <ProductDetail />;
 
 

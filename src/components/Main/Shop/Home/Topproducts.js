@@ -23,6 +23,9 @@ class Topproducts extends Component{
 
   }
 
+
+
+
 //Top Products Rendered from Collection
 render(){
 const {container,titleConatiner,title,body,productContainer,productImage,productName,productPrice} = styles;
