@@ -1,38 +1,35 @@
 import React,{Component} from 'react'
-import {View,Text,TouchableOpacity,ScrollView} from 'react-native';
+import {Navigator} from 'react-native';
 
 
-//Collection Component
-import Collection from './Collection'
-import Category from './Category'
-// import Topproducts from './Topproducts'
-import Topproducts from './Topproducts'
+import HomeView from './HomeView';
+import ProductDetail from '../ProductDetail/ProductDetail';
+import ListProduct from '../ListProduct/ListProduct';
 
 
 class Home extends Component{
 
 
-  gotoAuthentication(){
-
-  const {navigator} = this.props;
-  navigator.push({ name:'AUTHENTICATION'});
-  console.log('pressed')
-
-  }
-
-
-//Card Rendered from Collection
+//Navigator Home
 render(){
-const { navigator } = this.props;
-  return(
-    <ScrollView>
 
-<View style={{flex:1,backgroundColor:'#D4D3D0'}}>
-<Collection/>
-<Category/>
-<Topproducts/>
-</View>
-</ScrollView>
+  return(
+    <Navigator
+    initialRoute={{name:'HOME_VIEW' }}
+    renderScene={(route,navigator) => {
+
+    switch(route.name) {
+
+    case 'HOME_VIEW': return <HomeView navigator={navigator}/>;
+    case 'LIST_PRODUCT': return <ListProduct/>;
+    default:return <ProductDetail />;
+
+
+    }
+
+  }}
+
+    />
 
 
   );

@@ -15,11 +15,20 @@ import sp4 from '../../../../media/temp/sp4.jpeg';
 //Collection Component
 class Topproducts extends Component{
 
+
+  //Functions Details
+  gotoDetails(){
+  const { navigator } = this.props;
+  navigator.push({name:'PRODUCT_DETAIL'});
+
+  }
+
 //Top Products Rendered from Collection
 render(){
 const {container,titleConatiner,title,body,productContainer,productImage,productName,productPrice} = styles;
 
 
+//Product Images
   return(
 <View style= {container}>
 <View style={titleConatiner}>
@@ -28,38 +37,34 @@ const {container,titleConatiner,title,body,productContainer,productImage,product
 
 <View style={body}>
 
-<View style={productContainer}>
+<TouchableOpacity style={productContainer} onPress={this.gotoDetails.bind(this)}>
 <Image source={sp1} style={productImage}/>
 <Text style={productName}> Product Name</Text>
 <Text style={productPrice}> $400</Text>
-</View>
+</TouchableOpacity>
 
 
-<View style={productContainer}>
+<TouchableOpacity style={productContainer} onPress={this.gotoDetails.bind(this)}>
 <Image source={sp2} style={productImage}/>
 <Text style={productName}> Product Name</Text>
 <Text style={productPrice}> $600</Text>
-</View>
+</TouchableOpacity>
 
 
 
 
-<View style={productContainer}>
+<TouchableOpacity style={productContainer} onPress={this.gotoDetails.bind(this)}>
 <Image source={sp3} style={productImage}/>
 <Text style={productName}> Product Name</Text>
 <Text style={productPrice}> $400</Text>
-</View>
+</TouchableOpacity>
 
 
-<View style={productContainer}>
+<TouchableOpacity style={productContainer} onPress={this.gotoDetails.bind(this)}>
 <Image source={sp4} style={productImage}/>
 <Text style={productName}> Product Name</Text>
 <Text style={productPrice}> $600</Text>
-</View>
-
-
-
-
+</TouchableOpacity>
 
 </View>
 </View>

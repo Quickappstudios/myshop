@@ -11,27 +11,50 @@ import partyIcon from '../../../../media/temp/party.jpg';
 const {width, height} = Dimensions.get('window');
 
 
+
+
+
 class Category extends Component{
+
+
+//we go to ListProduct Screen
+  gotoListProduct(){
+  const { navigator } = this.props;
+  navigator.push({name:'LIST_PRODUCT'});
+
+  }
 
 render(){
 const {wrapper,textStyle,imageStyle,cateTitle} = styles;
-  return(
-    <View style={wrapper}>
+
+return(
+  <View style={wrapper}>
                   <View style={{ justifyContent: 'center', flex: 1, paddingTop: 5 }}>
                       <Text style={textStyle} >LIST OF CATEGORY</Text>
                   </View>
 
                   <View style={{ justifyContent: 'flex-end', flex: 4 }}>
                       <Swiper showsPagination width={imageWidth} height={imageHeight} >
+
+                          <TouchableOpacity onPress={this.gotoListProduct.bind(this)}>
                           <Image source={littleIcon} style={imageStyle}>
                               <Text style={cateTitle}>Maxi Dress</Text>
                           </Image>
+                          </TouchableOpacity>
+
+                          <TouchableOpacity onPress={this.gotoListProduct.bind(this)}>
                           <Image source={maxiIcon} style={imageStyle}>
                               <Text style={cateTitle}>Maxi Dress</Text>
                           </Image>
+                          </TouchableOpacity>
+
+                          <TouchableOpacity onPress={this.gotoListProduct.bind(this)}>
                           <Image source={partyIcon} style={imageStyle}>
                               <Text style={cateTitle}>Maxi Dress</Text>
                           </Image>
+                          </TouchableOpacity>
+
+
                       </Swiper>
                   </View>
               </View>
