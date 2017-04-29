@@ -43,6 +43,8 @@ export default class ChangeInfo extends Component {
                         <Image source={backSpecial} style={backIconStyle} />
                     </TouchableOpacity>
                 </View>
+
+
                 <View style={body}>
                     <TextInput
                         style={textInput}
@@ -51,6 +53,8 @@ export default class ChangeInfo extends Component {
                         value={name}
                         onChangeText={txtName => this.setState({ ...this.state, txtName })}
                     />
+
+
                     <TextInput
                         style={textInput}
                         placeholder="Enter your address"
@@ -58,6 +62,7 @@ export default class ChangeInfo extends Component {
                         value={address}
                         onChangeText={txtAddress => this.setState({ ...this.state, txtAddress })}
                     />
+
                     <TextInput
                         style={textInput}
                         placeholder="Enter your phone number"
@@ -65,6 +70,8 @@ export default class ChangeInfo extends Component {
                         value={phone}
                         onChangeText={txtPhone => this.setState({ ...this.state, txtPhone })}
                     />
+
+
                     <TouchableOpacity style={signInContainer}>
                         <Text style={signInTextStyle}>CHANGE YOUR INFOMATION</Text>
                     </TouchableOpacity>
@@ -74,6 +81,8 @@ export default class ChangeInfo extends Component {
     }
 }
 
+
+//styles created for user info
 const styles = StyleSheet.create({
     wrapper: { flex: 1, backgroundColor: '#fff' },
     header: { flex: 1, backgroundColor: '#2ABB9C', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 10 },// eslint-disable-line
