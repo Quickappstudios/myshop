@@ -10,13 +10,13 @@ import Topproducts from './Topproducts';
 class HomeView extends Component{
 
 render(){
-
+const{ types,topProducts } = this.props;
   return(
 <View>
 <ScrollView>
 <Collection/>
-<Category navigator={this.props.navigator}/>
-<Topproducts navigator={this.props.navigator}/>
+<Category navigator={this.props.navigator} types={types}/>
+<Topproducts navigator={this.props.navigator} topProducts={topProducts}/>
 </ScrollView>
 </View>
 

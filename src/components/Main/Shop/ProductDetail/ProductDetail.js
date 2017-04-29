@@ -41,7 +41,7 @@ export default class ProductDetail extends Component {
                 <View style={cardStyle}>
 
 
-                    
+
                     <View style={header}>
                         <TouchableOpacity onPress={this.goBack.bind(this)}>
                             <Image style={backStyle} source={back} />
@@ -70,6 +70,9 @@ export default class ProductDetail extends Component {
                                 <Text style={textSmoke}>100$</Text>
                             </Text>
                         </View>
+
+
+
                         <View style={descContainer}>
                             <Text style={descStyle}>A delicate layer of eyelash lace brings dreamy elegance to this piece, while smooth, lightweight lining feels luxurious against your skin. We love it with heels for a look that fits in on date night, or with cool booties to add an edge.</Text>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 15 }}>

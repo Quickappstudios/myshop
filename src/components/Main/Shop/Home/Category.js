@@ -4,12 +4,12 @@ import Swiper from 'react-native-swiper';
 
 
 //import Image Variables
-import littleIcon from '../../../../media/temp/little.jpg';
-import maxiIcon from '../../../../media/temp/maxi.jpg';
-import partyIcon from '../../../../media/temp/party.jpg';
+// import littleIcon from '../../../../media/temp/little.jpg';
+// import maxiIcon from '../../../../media/temp/maxi.jpg';
+// import partyIcon from '../../../../media/temp/party.jpg';
 
 const {width, height} = Dimensions.get('window');
-
+const url = 'http://localhost/api/images/type/';
 
 
 
@@ -27,6 +27,10 @@ class Category extends Component{
 render(){
 const {wrapper,textStyle,imageStyle,cateTitle} = styles;
 
+//variable types we set
+   const { types } = this.props;
+
+
 return(
   <View style={wrapper}>
                   <View style={{ justifyContent: 'center', flex: 1, paddingTop: 5 }}>
@@ -35,27 +39,16 @@ return(
 
                   <View style={{ justifyContent: 'flex-end', flex: 4 }}>
                       <Swiper showsPagination width={imageWidth} height={imageHeight} >
-
-                          <TouchableOpacity onPress={this.gotoListProduct.bind(this)}>
-                          <Image source={littleIcon} style={imageStyle}>
-                              <Text style={cateTitle}>Maxi Dress</Text>
-                          </Image>
-                          </TouchableOpacity>
-
-                          <TouchableOpacity onPress={this.gotoListProduct.bind(this)}>
-                          <Image source={maxiIcon} style={imageStyle}>
-                              <Text style={cateTitle}>Maxi Dress</Text>
-                          </Image>
-                          </TouchableOpacity>
-
-                          <TouchableOpacity onPress={this.gotoListProduct.bind(this)}>
-                          <Image source={partyIcon} style={imageStyle}>
-                              <Text style={cateTitle}>Maxi Dress</Text>
-                          </Image>
-                          </TouchableOpacity>
+                      { types.map(e => (
+                       <TouchableOpacity onPress={this.gotoListProduct.bind(this)} key={e.id}>
+                           <Image source={{ uri: `${url}${e.image}` }} style={imageStyle}>
+                               <Text style={cateTitle}>{e.name}</Text>
+                           </Image>
+                       </TouchableOpacity>
+                   )) }
 
 
-                      </Swiper>
+             </Swiper>
                   </View>
               </View>
 

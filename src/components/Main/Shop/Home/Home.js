@@ -13,6 +13,9 @@ class Home extends Component{
 //Navigator Home
 render(){
 
+const{ types,topProducts } = this.props;
+
+
   return(
     <Navigator
     initialRoute={{name:'HOME_VIEW' }}
@@ -21,7 +24,7 @@ render(){
     //Home Screen Navigation State
     switch(route.name) {
 
-    case 'HOME_VIEW': return <HomeView navigator={navigator}/>;
+    case 'HOME_VIEW': return <HomeView navigator={navigator} types={types} topProducts={topProducts} />;
     case 'LIST_PRODUCT': return <ListProduct navigator={navigator}/>;
     default:return <ProductDetail navigator={navigator} />;
 

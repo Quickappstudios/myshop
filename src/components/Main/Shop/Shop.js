@@ -38,9 +38,28 @@ class Shop extends Component{
 constructor(props){
 super(props);
 this.state=
-{selectedTab:'home'};
+{
+selectedTab:'home',
+types:[],
+topProducts:[]
+
+};
 
 }
+
+
+
+//Lifecycle api from localhost
+
+//Get Data from http://localhost/api/
+componentDidMount() {
+        fetch('http://localhost/api/')// eslint-disable-line
+        .then(res => res.json())
+        .then(resJSON => {
+            const { type, product } = resJSON;
+            this.setState({ types: type,topProducts:product });
+        });
+    }
 
 
 
@@ -56,10 +75,15 @@ open();
 
 
 
+
+
 //Opens Drawer and Shows Tab Bar
 render(){
 
 const {iconStyle} = styles;
+
+const {types,selectedTab,topProducts}= this.state
+
   return(
 
   <View style={{flex:1}}>
@@ -69,20 +93,21 @@ const {iconStyle} = styles;
 
 
   <TabNavigator.Item
-    selected={this.state.selectedTab === 'home'}
+    selected={selectedTab === 'home'}
     title="Home"
   onPress={() => this.setState({ selectedTab: 'home' })}
   renderIcon={() => <Image source={homeIcon} style={iconStyle} />}
   renderSelectedIcon={() => <Image source={homeIconS} style={iconStyle} />}
   selectedTitleStyle={{ color: '#34B089', fontFamily: 'Avenir' }}
   >
-    <Home/>
+    <Home types={types} topProducts={topProducts}/>
+
   </TabNavigator.Item>
 
 
 
   <TabNavigator.Item
-    selected={this.state.selectedTab === 'cart'}
+    selected={selectedTab === 'cart'}
     title="Cart"
   onPress={() => this.setState({ selectedTab: 'cart' })}
   renderIcon={() => <Image source={CartIcon} style={iconStyle} />}
@@ -97,7 +122,7 @@ const {iconStyle} = styles;
 
 
   <TabNavigator.Item
-    selected={this.state.selectedTab === 'search'}
+    selected={selectedTab === 'search'}
     title="Search"
   onPress={() => this.setState({ selectedTab: 'search' })}
   renderIcon={() => <Image source={SearchIcon}  style={iconStyle} />}
@@ -113,7 +138,7 @@ const {iconStyle} = styles;
 
 
   <TabNavigator.Item
-    selected={this.state.selectedTab === 'contact'}
+    selected={selectedTab === 'contact'}
     title="Contact"
   onPress={() => this.setState({ selectedTab: 'contact' })}
   renderIcon={() => <Image source={ContactIcon} style={iconStyle} />}

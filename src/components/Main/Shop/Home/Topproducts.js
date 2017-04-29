@@ -1,12 +1,16 @@
 import React,{Component} from 'react'
-import {View,Text,TouchableOpacity,Image,StyleSheet,Dimensions} from 'react-native';
+import {View,Text,TouchableOpacity,Image,StyleSheet,Dimensions,ListView} from 'react-native';
+
+
+//URl for images
+const url = 'http://localhost/api/images/product/';
+
 
 //Import Images
-import sp1 from '../../../../media/temp/sp1.jpeg';
-import sp2 from '../../../../media/temp/sp2.jpeg';
-import sp3 from '../../../../media/temp/sp3.jpeg';
-import sp4 from '../../../../media/temp/sp4.jpeg';
-
+// import sp1 from '../../../../media/temp/sp1.jpeg';
+// import sp2 from '../../../../media/temp/sp2.jpeg';
+// import sp3 from '../../../../media/temp/sp3.jpeg';
+// import sp4 from '../../../../media/temp/sp4.jpeg';
 
 
 
@@ -16,10 +20,23 @@ import sp4 from '../../../../media/temp/sp4.jpeg';
 class Topproducts extends Component{
 
 
-  //Functions Details
+//ListView constructor
+
+constructor(props) {
+        super(props);
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        const { topProducts } = this.props;
+        this.state = {
+            dataSource: ds.cloneWithRows(topProducts)
+        };
+    }
+
+
+
+  //Functions Details to go to details Screen
   gotoDetails(){
-  const { navigator } = this.props;
-  navigator.push({name:'PRODUCT_DETAIL'});
+    const { navigator } = this.props;
+      navigator.push({ name: 'PRODUCT_DETAIL'});
 
   }
 
@@ -38,36 +55,19 @@ const {container,titleConatiner,title,body,productContainer,productImage,product
 <Text style={title}>Top Products </Text>
 </View>
 
-<View style={body}>
+             <View style={body}>
 
-<TouchableOpacity style={productContainer} onPress={this.gotoDetails.bind(this)}>
-<Image source={sp1} style={productImage}/>
-<Text style={productName}> Product Name</Text>
-<Text style={productPrice}> $400</Text>
-</TouchableOpacity>
+               {this.props.topProducts.map(e => (
+                         <TouchableOpacity style={productContainer} onPress={() => this.gotoDetails(e)} key={e.id} >
 
+                            <Image source={{ uri: `${url} ${e.images[0]}` }} style={productImage} />
 
-<TouchableOpacity style={productContainer} onPress={this.gotoDetails.bind(this)}>
-<Image source={sp2} style={productImage}/>
-<Text style={productName}> Product Name</Text>
-<Text style={productPrice}> $600</Text>
-</TouchableOpacity>
+                            <Text style={productName}>{e.name.toUpperCase()}</Text>
 
+                            <Text style={productPrice}>{e.price}$</Text>
+                        </TouchableOpacity>
+                    ))}
 
-
-
-<TouchableOpacity style={productContainer} onPress={this.gotoDetails.bind(this)}>
-<Image source={sp3} style={productImage}/>
-<Text style={productName}> Product Name</Text>
-<Text style={productPrice}> $400</Text>
-</TouchableOpacity>
-
-
-<TouchableOpacity style={productContainer} onPress={this.gotoDetails.bind(this)}>
-<Image source={sp4} style={productImage}/>
-<Text style={productName}> Product Name</Text>
-<Text style={productPrice}> $600</Text>
-</TouchableOpacity>
 
 </View>
 </View>
