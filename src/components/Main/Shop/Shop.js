@@ -95,6 +95,23 @@ const {iconStyle} = styles;
 
 
 
+
+  <TabNavigator.Item
+    selected={this.state.selectedTab === 'search'}
+    title="Search"
+  onPress={() => this.setState({ selectedTab: 'search' })}
+  renderIcon={() => <Image source={SearchIcon}  style={iconStyle} />}
+  renderSelectedIcon={() => <Image source={SearchIconS} style={iconStyle} />}
+  selectedTitleStyle={{ color: '#34B089', fontFamily: 'Avenir' }}
+  >
+    <Search />
+  </TabNavigator.Item>
+
+
+
+
+
+
   <TabNavigator.Item
     selected={this.state.selectedTab === 'contact'}
     title="Contact"
@@ -108,16 +125,7 @@ const {iconStyle} = styles;
 
 
 
-  <TabNavigator.Item
-    selected={this.state.selectedTab === 'search'}
-    title="Search"
-  onPress={() => this.setState({ selectedTab: 'search' })}
-  renderIcon={() => <Image source={SearchIcon}  style={iconStyle} />}
-  renderSelectedIcon={() => <Image source={SearchIconS} style={iconStyle} />}
-  selectedTitleStyle={{ color: '#34B089', fontFamily: 'Avenir' }}
-  >
-    <Search />
-  </TabNavigator.Item>
+
 
 </TabNavigator>
 
